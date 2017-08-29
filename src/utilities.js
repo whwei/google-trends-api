@@ -157,6 +157,7 @@ export function getResults(request) {
       method: 'GET',
       host: 'trends.google.com',
       path: '/trends/api/explore',
+      proxy: obj.proxy,
       qs: {
         hl: obj.hl,
         req: JSON.stringify({

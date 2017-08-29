@@ -1,12 +1,14 @@
 'use strict';
 import https from 'https';
 import querystring from 'querystring';
+import ProxyAgent from 'proxy-agent';
 
-export default function request({method, host, path, qs}) {
+export default function request({method, host, path, qs, proxy}) {
   const options = {
     host,
     method,
     path: `${path}?${querystring.stringify(qs)}`,
+    agent: proxy ? new ProxyAgent(proxy) : undefined,
   };
 
   return new Promise((resolve, reject) => {
